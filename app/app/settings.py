@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-&tkmvihwk)uv!a7bp_a95d$y$!di01(6r0gq2d5vv%x7oc#$un
 DEBUG = True
 
 ALLOWED_HOSTS = []
-    
+
 
 # Application definition
 
@@ -128,3 +128,6 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#  set up the auth user model configuration and use core.user
+AUTH_USER_MODEL = 'core.User'
