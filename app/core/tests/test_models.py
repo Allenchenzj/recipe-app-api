@@ -36,7 +36,7 @@ class ModelTests(TestCase):
         with self.assertRaises(ValueError):
             get_user_model().objects.create_user('', 'test123')
 
-    def test_creat_superusers(self):
+    def test_creat_superuser(self):
         """Test creating a superuser"""
         user = get_user_model().objects.create_superuser(
             'test@example.com',
