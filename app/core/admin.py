@@ -50,3 +50,4 @@ class UserAdmin(BaseUserAdmin):
 # those models can be created, deleted, updated
 # and queried through the user interface.
 admin.site.register(models.User, UserAdmin)
+admin.site.register(models.Recipe)
