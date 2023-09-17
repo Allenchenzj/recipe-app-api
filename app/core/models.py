@@ -61,5 +61,22 @@ class Recipe(models.Model):
     price = models.DecimalField(max_digits=5, decimal_places=2)
     link = models.CharField(max_length=255, blank=True)
 
+    # we could have manay recipes with many tags, any receipe can be associated with any tags vice versa
+    tags = models.ManyToManyField('Tag')
+
     def __str__(self) -> str:
         return self.title
+
+class Tag(models.Model):
+    """Tag for filtering recipes"""
+    name = models.CharField(max_length=255)
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        #  if the user deleted the tag associated with the user will also be deleted
+        on_delete=models.CASCADE,
+    )
+
+    def __str__(self):
+        return self.name
+
+

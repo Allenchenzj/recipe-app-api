@@ -9,6 +9,9 @@ from django.contrib.auth import get_user_model
 #  need to import this when testing model other than user model
 from core import models
 
+def create_user(email='user@example.com', password='testpass123'):
+    """Create and return a new user, create a test user we can use to assign to our tag"""
+    return get_user_model().objects.create_user(email, password)
 
 class ModelTests(TestCase):
 
@@ -67,3 +70,12 @@ class ModelTests(TestCase):
         )
 
         self.assertEqual(str(recipe), recipe.title)
+
+    def test_create_tag(self):
+        '''Test creating a tag is successful
+        This test to thing one is we have correct string representation set up for model instances
+        2 is we can create a tag instance '''
+        user = create_user()
+        tag = models.Tag.objects.create(user=user, name='Tag1')
+
+        self.assertEqual(str(tag), tag.name)

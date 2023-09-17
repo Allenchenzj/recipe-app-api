@@ -51,3 +51,6 @@ class UserAdmin(BaseUserAdmin):
 # and queried through the user interface.
 admin.site.register(models.User, UserAdmin)
 admin.site.register(models.Recipe)
+
+# register the Tag model to the admin, it is managable through Django CLI
+admin.site.register(models.Tag)
