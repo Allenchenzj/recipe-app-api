@@ -54,3 +54,4 @@ admin.site.register(models.Recipe)
 
 # register the Tag model to the admin, it is managable through Django CLI
 admin.site.register(models.Tag)
+admin.site.register(models.Ingredient)
