@@ -21,12 +21,25 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-&tkmvihwk)uv!a7bp_a95d$y$!di01(6r0gq2d5vv%x7oc#$un'
+SECRET_KEY = os.evniron.get('SECRET_KEY', 'changeme')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = bool(int(os.environ.get('DEBUG', 0)))
 
+
+# access is restricted to these host names.
 ALLOWED_HOSTS = []
+# ALLOWED_HOSTS is a setting in Django's configuration that defines a list of
+# valid hostnames that the application can serve.
+
+ALLOWED_HOSTS.extend(
+    # filter(None, ...) is used to eliminate any falsy values (like empty strings) from the resulting list.
+
+    filter(
+        None,
+        os.environ.get('ALLOWED_HOSTS', '').split(','),
+    )
+)
 
 
 # Application definition
@@ -148,7 +161,7 @@ REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }
 
-# enable to get the image obliged to work through the browser interface 
+# enable to get the image obliged to work through the browser interface
 SPECTACULAR_SETTINGS = {
     'COMPONENT_SPLIT_REQUEST': True,
 }
